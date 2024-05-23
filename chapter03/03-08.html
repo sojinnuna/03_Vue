@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-bind 생략됨 -->
+      <!-- 입력받을 값을 name 값과 바인딩해주고 해당 값을 입력할 때 changeName 함수와 연결해줌 -->
+      <input type="text" :value="name" @input="changeName" /><br />
+      이름: <span>{{name}}</span>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            name: '',
+          };
+        },
+        //데이터 바깥에 만들어둠 / e = input 하는 이벤트
+        // taget은? 상단에 <input type=~> input 이벤트가 일어난 input 요소(넓은 범위)
+        methods: {
+          changeName(e) {
+            // 화살표 함수로 쓰면 this를 못 찾기 때문에 꼭 일반 함수로 쓸 것
+            this.name = e.target.value;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

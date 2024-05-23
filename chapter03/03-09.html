@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      예금액: <input type="text" v-model="amount" />
+      <!-- title 속성은 마우스 오버시 출력되는 텍스트 -->
+      <!-- v-show는 조건식을 넣어주는데 조건식이 false일 경우 요소가 존재는 하지만 dispaly:none;으로 변경된다 -->
+      <img
+        v-show="amount < 0"
+        src="https://contactsvc.bmaster.kro.kr/img/error.png"
+        title="마이너스는 허용하지 않습니다."
+        style="width: 15px; height: 15px; vertical-align: middle"
+      />
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            amount: '',
+          };
+        },
+        //데이터 바깥에 만들어둠 / e = input 하는 이벤트
+        // taget은? 상단에 <input type=~> input 이벤트가 일어난 input 요소(넓은 범위)
+        methods: {
+          changeName(e) {
+            // 화살표 함수로 쓰면 this를 못 찾기 때문에 꼭 일반 함수로 쓸 것
+            this.name = e.target.value;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
