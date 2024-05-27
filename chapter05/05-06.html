@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--특정 이벤트 preventdefault를 적용할 경우, prevent로 줄여쓸 수 있다 -->
+      <div
+        @contextmenu.prevent
+        style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px"
+      >
+        <!-- 링크 클릭시 confirmFB 함수 호출 -->
+        <a href="https://facebook.com" @click="confirmFB">페이스북</a>
+        <script src="https://unpkg.com/vue"></script>
+      </div>
+    </div>
+
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {};
+        },
+        method: {
+          ctxstop(e) {
+            // 마운스 오른쪽 클릭시 뜨는 메뉴창으로 이동 못하게 함
+            e.preventDefault();
+          },
+          confirmFB(e) {
+            if (!confirm('페이스북으로 이동할까요?')) {
+              e.preventDefault();
+            }
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
