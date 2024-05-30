@@ -20,7 +20,7 @@
       <template v-slot:label>
         <!-- 체크박스의 체크여부에 따라 다른 스타일 적용 -->
         <span
-          v-if="checked === true"
+          v-if="item.checked"
           style="color: blue; text-decoration: underline"
           ><i>{{ item.label }}</i></span
         >
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import CheckBox2 from './CheckBox1.vue';
+import CheckBox2 from './CheckBox2.vue';
 
 export default {
   name: 'SlotTest',

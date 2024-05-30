@@ -1,13 +1,14 @@
 <template>
   <div>
-    <SlotTest />
+    <Calc />
   </div>
 </template>
 
 <script>
-import SlotTest from './components/SlotTest.vue';
+import Calc from './components/Calc8.vue';
+
 export default {
   name: 'App',
-  components: { SlotTest },
+  components: { Calc },
 };
 </script>
