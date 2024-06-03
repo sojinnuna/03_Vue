@@ -1,94 +1,23 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
-  <header>
-    <!-- @: /src의 경로를 별명으로 지칭해둠 -->
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <!-- 기본 HTML에서 a 태그와 같은 역할, 해당 경로로 이동시켜줌 -->
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <!-- 경로에 따라 실제로 변하는 부분 -->
-  <RouterView />
+  <div class="container">
+    <!-- Header처럼 변하지 않고 고정된 부분은 componets 폴더에 생성 -->
+    <Header />
+    <!-- router-view처럼 동적으로 변하는 페이지들은 pages 폴더에 생성 -->
+    <router-view></router-view>
+  </div>
 </template>
+<script>
+import Header from '@/components/Header.vue';
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+// components 폴더 내에 있는 컴포넌트들만 등록하면 된다
+export default {
+  name: 'App',
+  components: { Header },
+};
+</script>
+<style>
+.container {
   text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  margin-top: 10px;
 }
 </style>
