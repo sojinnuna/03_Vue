@@ -55,17 +55,18 @@ const { addTodo } = inject('actions');
 // 객체는 참조형 변수기 때문에 reactive로 반응성 만들어줌
 const todoItem = reactive({ todo: '', desc: '' });
 
-// 아이템의 할일 값이 비어있으면 경고창 출력
 const addTodoHandler = () => {
   let { todo } = todoItem;
+  // 아이템의 할일 값이 비어있으면 경고창 출력
   if (!todo || todo.trim() === '') {
     alert('할일은 반드시 입력해야 합니다');
     // return을 만나면 함수 종료
     return;
   }
   // 넣어준 정보를 가지고 목록의 맨 뒤에 추가해줌
-  addTodo({ ...todoItem });
-  // 전체 목록 페이지로 이동
-  router.push('/todos');
+  addTodo({ ...todoItem }, () => {
+    // 리스트에 항목을 추가한 후 전체 목록 페이지로 이동
+    router.push('/todos');
+  });
 };
 </script>
